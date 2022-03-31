@@ -1,13 +1,14 @@
 export { fight, getRandom, setUserImage, randomize };
 import { modalRoot } from "./win.js";
-const headerWinOrLose = document.querySelector(".modal__header");
 const radioButtons = document.getElementsByName("choice");
 const userChoiceImage = document.querySelector(".user-choice");
 const enemyChoiceImage = document.querySelector(".enemy-choice");
 const images = ["images/rock.jpg", "images/paper.jpg", "images/scissors.jpg"];
+const modalHeader = document.querySelector(".modal__header");
 const content = document.querySelector(".modal__content");
 const modalFooter = document.querySelector(".modal__footer");
 
+// Gets the user choice
 function getUserChoice() {
   let choice;
   let temp;
@@ -57,12 +58,14 @@ function setUserImage() {
 const userScore = document.querySelector(".user-score");
 const enemyScore = document.querySelector(".enemy-score");
 const draw = document.querySelector(".draw");
-/*
-  ROCK- 0 1
-  PAPER- 1  2
-  SCISSOR - 2 3
-  */
 
+/*
+  ROCK- 0 - 1
+  PAPER- 1 -  2
+  SCISSOR - 2 - 3
+*/
+
+// logic for checking who wins
 function fight() {
   const user = getUserChoice();
   const enemy = getEnemyChoice();
@@ -99,29 +102,33 @@ function fight() {
   }
 
   if (userScore.textContent == 10) {
-    reset();
     endModal("YOU WIN");
-    modalRoot.classList.add("visible");
+    resetPoints();
   } else if (enemyScore.textContent == 10) {
-    reset();
     endModal("YOU LOSE");
-    modalRoot.classList.add("visible");
+    resetPoints();
   }
 }
 
+// toggles when the user/enemy reaches 10 points
 function endModal(winOrLose) {
-  headerWinOrLose.innerHTML = winOrLose;
+  modalHeader.innerHTML = winOrLose;
   content.innerHTML = "Thank you for playing!";
-  modalFooter.innerHTML = "--Jiseeeh";
+  modalFooter.innerHTML = "-Jiseeeh";
+  modalRoot.classList.add("visible");
 }
+
+// toggles every round
 function resultModal(message) {
+  modalHeader.innerHTML = "";
   modalFooter.innerHTML = "";
   content.classList.add("center");
   content.innerHTML = message;
   modalRoot.classList.toggle("visible");
 }
 
-function reset() {
+// resets the points after the player/enemy reaches 10 points
+function resetPoints() {
   enemyScore.textContent = 0;
   userScore.textContent = 0;
   draw.textContent = 0;

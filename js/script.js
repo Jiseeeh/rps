@@ -7,7 +7,7 @@ const startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", () => {
   const randomizeImage = setInterval(randomize, 1);
   // disables the button temporarily to prevent unlimited clicks
-  startButton.disabled = true;
+  // startButton.disabled = true;
 
   setTimeout(function () {
     clearInterval(randomizeImage);

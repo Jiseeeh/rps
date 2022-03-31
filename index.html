@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Icons was from Cristiano Zoucas from NounProject.com // THANK YOU!-->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="css/style.css" />
+    <!-- MADE BY JOHN CARLO N. CAMARA!!!!! -->
   </head>
   <body>
+    <!-- HEADER -->
     <header class="header">
       <h1 class="header__heading">Rock Paper Scissors&#33;</h1>
       <h2 class="header__heading">
@@ -19,56 +20,69 @@
       </h2>
       <h2 class="header__heading">Draw: <span class="score draw">0</span></h2>
     </header>
+    <!-- MAIN CONTENT -->
     <main class="content">
       <section class="content__body">
-        <h3 class="choice-heading">You</h3>
-        <figure class="choice">
-          <!-- img -->
-          <img class="choice__image user-choice" src="images/rock.jpg" alt="" />
-          <figcaption class="image__caption">
-            <input
-              class="inputs"
-              type="radio"
-              name="choice"
-              id="rock"
-              value="Rock"
-              autocomplete="off"
-              checked
+        <!-- USER CHOICE -->
+        <article class="choice-container">
+          <!-- USER HEADING -->
+          <h3 class="choice-heading">You</h3>
+          <figure class="choice">
+            <img
+              class="choice__image user-choice"
+              src="images/rock.jpg"
+              alt=""
             />
-            <label class="labels" for="rock">Rock</label>
-            <input
-              class="inputs"
-              type="radio"
-              name="choice"
-              id="paper"
-              value="Paper"
-              autocomplete="off"
-            />
-            <label class="labels" for="paper">Paper</label>
-            <input
-              class="inputs"
-              type="radio"
-              name="choice"
-              id="scissor"
-              value="Scissor"
-              autocomplete="off"
-            />
-            <label class="labels" for="scissor">Scissors</label>
-          </figcaption>
-        </figure>
-        <h3 class="choice-heading">Enemy</h3>
-        <figure class="choice">
-          <!-- img -->
-          <img
-            class="choice__image enemy-choice"
-            src="images/paper.jpg"
-            alt=""
-          />
-          <figcaption class="image__caption enemy-caption">Enemy</figcaption>
-        </figure>
+            <figcaption class="image__caption">
+              <!-- CHOICES FOR THE PLAYER -->
+              <input
+                class="inputs"
+                type="radio"
+                name="choice"
+                id="rock"
+                value="Rock"
+                autocomplete="off"
+                checked
+              />
+              <label class="labels" for="rock">Rock</label>
+              <input
+                class="inputs"
+                type="radio"
+                name="choice"
+                id="paper"
+                value="Paper"
+                autocomplete="off"
+              />
+              <label class="labels" for="paper">Paper</label>
+              <input
+                class="inputs"
+                type="radio"
+                name="choice"
+                id="scissor"
+                value="Scissor"
+                autocomplete="off"
+              />
+              <label class="labels" for="scissor">Scissors</label>
+            </figcaption>
+          </figure>
+        </article>
         <button class="start-button">FIGHT</button>
+        <!-- ENEMY CHOICE -->
+        <article class="choice-container">
+          <!-- ENEMY HEADING -->
+          <h3 class="choice-heading">Enemy</h3>
+          <figure class="choice">
+            <img
+              class="choice__image enemy-choice"
+              src="images/paper.jpg"
+              alt=""
+            />
+            <figcaption class="image__caption enemy-caption">Enemy</figcaption>
+          </figure>
+        </article>
       </section>
     </main>
+    <!-- Hidden Modal -->
     <div class="modal-container">
       <div class="modal">
         <h3 class="modal__header"></h3>
