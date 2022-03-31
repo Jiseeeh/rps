@@ -104,13 +104,6 @@
     transition: box-shadow .15s;
 }
 
-.header-win::before {
-    content: "You win!";
-}
-
-.header-lose::before {
-    content: "You lose!";
-}
 
 .modal:hover {
     box-shadow: var(--box-shadow)
