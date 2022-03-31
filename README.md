@@ -3,5 +3,3 @@
 ![Banner](images/Practice.png)
 
 ---
-
-## WEB VIEW IS STILL NOT AVAILABLE PAAAHKKK YE
