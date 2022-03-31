@@ -10,7 +10,6 @@
   </head>
   <body>
     <header class="header">
-      
       <h1 class="header__heading">Rock Paper Scissors&#33;</h1>
       <h2 class="header__heading">
         Your Score: <span class="score user-score">0</span>
@@ -27,7 +26,8 @@
           <!-- img -->
           <img class="choice__image user-choice" src="images/rock.jpg" alt="" />
           <figcaption class="image__caption">
-            <input class="inputs"
+            <input
+              class="inputs"
               type="radio"
               name="choice"
               id="rock"
@@ -36,7 +36,8 @@
               checked
             />
             <label class="labels" for="rock">Rock</label>
-            <input class="inputs"
+            <input
+              class="inputs"
               type="radio"
               name="choice"
               id="paper"
@@ -44,7 +45,8 @@
               autocomplete="off"
             />
             <label class="labels" for="paper">Paper</label>
-            <input class="inputs"
+            <input
+              class="inputs"
               type="radio"
               name="choice"
               id="scissor"
@@ -62,18 +64,16 @@
             src="images/paper.jpg"
             alt=""
           />
-          <figcaption class="image__caption enemy-caption">Enemy </figcaption>
+          <figcaption class="image__caption enemy-caption">Enemy</figcaption>
         </figure>
         <button class="start-button">FIGHT</button>
-      </section>  
+      </section>
     </main>
-    <div class="modal-container ">
+    <div class="modal-container">
       <div class="modal">
         <h3 class="modal__header"></h3>
-          <p class="modal__content">
-            Thank you for playing!!!
-          </p>
-        <h3 class="modal__footer">&#45;&#45;Jiseeeh</h3>
+        <p class="modal__content"></p>
+        <h3 class="modal__footer"></h3>
       </div>
     </div>
     <script type="module" src="js/script.js"></script>
