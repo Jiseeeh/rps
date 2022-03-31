@@ -1,10 +1,12 @@
 export { fight, getRandom, setUserImage, randomize };
 import { modalRoot } from "./win.js";
-const headerWinOrLose = document.querySelector('.modal__header')
+const headerWinOrLose = document.querySelector(".modal__header");
 const radioButtons = document.getElementsByName("choice");
 const userChoiceImage = document.querySelector(".user-choice");
 const enemyChoiceImage = document.querySelector(".enemy-choice");
 const images = ["images/rock.jpg", "images/paper.jpg", "images/scissors.jpg"];
+const content = document.querySelector(".modal__content");
+const modalFooter = document.querySelector(".modal__footer");
 
 function getUserChoice() {
   let choice;
@@ -22,11 +24,11 @@ function getUserChoice() {
 
 // Gets the enemy choice when the fight button was clicked
 function getEnemyChoice() {
-  const enemyCaption = document.querySelector('.enemy-caption')
+  const enemyCaption = document.querySelector(".enemy-caption");
   // gets a random choice from the radio buttons
   const choice = getRandom(radioButtons);
   enemyChoiceImage.src = images[choice];
-  enemyCaption.innerHTML = radioButtons[choice].value
+  enemyCaption.innerHTML = radioButtons[choice].value;
   console.log("enemy", radioButtons[choice].value, choice);
   return choice;
 }
@@ -67,6 +69,7 @@ function fight() {
 
   if (user === enemy) {
     draw.innerHTML = parseInt(draw.textContent) + 1;
+    resultModal("DRAW!!!");
     console.log("draw");
   }
   /* used modulo to stay at 1-3 only 
@@ -87,28 +90,39 @@ function fight() {
   // basta pag nag equal ang values panalo enemy pota
   else if ((user + 1) % 3 === enemy) {
     enemyScore.innerHTML = parseInt(enemyScore.textContent) + 1;
+    resultModal("ENEMY WINS!!!");
     console.log("enemy-wins");
   } else {
     userScore.innerHTML = parseInt(userScore.textContent) + 1;
+    resultModal("YOU WIN!!!");
     console.log("user-wins");
   }
 
   if (userScore.textContent == 10) {
-    reset()
-    headerWinOrLose.innerHTML = "YOU WIN!"
-    modalRoot.classList.toggle('visible')
-
-  }
-
-  else if (enemyScore.textContent == 10) {
-    reset()
-    headerWinOrLose.innerHTML = "YOU LOSE!"
-    modalRoot.classList.toggle('visible')
+    reset();
+    endModal("YOU WIN");
+    modalRoot.classList.add("visible");
+  } else if (enemyScore.textContent == 10) {
+    reset();
+    endModal("YOU LOSE");
+    modalRoot.classList.add("visible");
   }
 }
 
+function endModal(winOrLose) {
+  headerWinOrLose.innerHTML = winOrLose;
+  content.innerHTML = "Thank you for playing!";
+  modalFooter.innerHTML = "--Jiseeeh";
+}
+function resultModal(message) {
+  modalFooter.innerHTML = "";
+  content.classList.add("center");
+  content.innerHTML = message;
+  modalRoot.classList.toggle("visible");
+}
+
 function reset() {
-  enemyScore.textContent = 0
-  userScore.textContent = 0
-  draw.textContent = 0
+  enemyScore.textContent = 0;
+  userScore.textContent = 0;
+  draw.textContent = 0;
 }
