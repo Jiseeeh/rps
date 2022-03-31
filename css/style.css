@@ -155,6 +155,11 @@ body {
   .start-button {
     padding: 1rem;
   }
+
+  .modal {
+    width: 20rem;
+    height: 5rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
