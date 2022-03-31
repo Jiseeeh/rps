@@ -1,4 +1,4 @@
-export { fight, getRandom, setUserImage, randomize };
+export { fight, getRandom, randomize };
 import { modalRoot } from "./win.js";
 const radioButtons = document.getElementsByName("choice");
 const userChoiceImage = document.querySelector(".user-choice");
@@ -54,6 +54,8 @@ function setUserImage() {
     })
   );
 }
+
+setUserImage();
 
 const userScore = document.querySelector(".user-score");
 const enemyScore = document.querySelector(".enemy-score");

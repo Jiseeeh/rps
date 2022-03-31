@@ -1,4 +1,4 @@
-import { fight, setUserImage, randomize } from "./visuals.js";
+import { fight, randomize } from "./visuals.js";
 import "./win.js";
 const startButton = document.querySelector(".start-button");
 
@@ -17,4 +17,3 @@ startButton.addEventListener("click", () => {
   }, 2000);
 });
 
-setUserImage();
