@@ -1,4 +1,4 @@
-export { fight, getRandom, randomize };
+export { fight, getRandom, randomize,images };
 import { modalRoot } from "./win.js";
 const radioButtons = document.getElementsByName("choice");
 const userChoiceImage = document.querySelector(".user-choice");

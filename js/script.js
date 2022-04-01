@@ -1,4 +1,4 @@
-import { fight, randomize } from "./visuals.js";
+import { fight, randomize,images } from "./visuals.js";
 import "./win.js";
 const startButton = document.querySelector(".start-button");
 
@@ -17,3 +17,12 @@ startButton.addEventListener("click", () => {
   }, 2000);
 });
 
+function loadImages () {
+  let img = new Image()
+  for (const image of images) {
+    img.src = image
+    console.log(image);
+  }
+}
+
+window.onload = loadImages
