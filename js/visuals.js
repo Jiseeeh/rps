@@ -19,7 +19,7 @@ function getUserChoice() {
       break;
     }
   }
-  console.log("user", temp, choice);
+  // console.log("user", temp, choice);
   return choice;
 }
 
@@ -30,7 +30,7 @@ function getEnemyChoice() {
   const choice = getRandom(radioButtons);
   enemyChoiceImage.src = images[choice];
   enemyCaption.innerHTML = radioButtons[choice].value;
-  console.log("enemy", radioButtons[choice].value, choice);
+  // console.log("enemy", radioButtons[choice].value, choice);
   return choice;
 }
 
@@ -75,7 +75,7 @@ function fight() {
   if (user === enemy) {
     draw.innerHTML = parseInt(draw.textContent) + 1;
     resultModal("DRAW!!!");
-    console.log("draw");
+    // console.log("draw");
   }
   /* used modulo to stay at 1-3 only 
        so if it is equals to the enemy's choice, enemy will win because we just add 1 
@@ -96,11 +96,11 @@ function fight() {
   else if ((user + 1) % 3 === enemy) {
     enemyScore.innerHTML = parseInt(enemyScore.textContent) + 1;
     resultModal("ENEMY WINS!!!");
-    console.log("enemy-wins");
+    // console.log("enemy-wins");
   } else {
     userScore.innerHTML = parseInt(userScore.textContent) + 1;
     resultModal("YOU WIN!!!");
-    console.log("user-wins");
+    // console.log("user-wins");
   }
 
   if (userScore.textContent == 10) {

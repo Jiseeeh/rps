@@ -21,7 +21,7 @@ function loadImages () {
   let img = new Image()
   for (const image of images) {
     img.src = image
-    console.log(image);
+    // console.log(image);
   }
 }
 
