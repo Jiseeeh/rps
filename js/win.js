@@ -1,4 +1,3 @@
-export { modalRoot };
 const modalRoot = document.querySelector(".modal-container");
 const modal = document.querySelector(".modal");
 
