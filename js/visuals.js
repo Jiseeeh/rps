@@ -1,65 +1,32 @@
-export { fight, getRandom, randomize,images };
-import { modalRoot } from "./win.js";
+import { getUserChoice, getEnemyChoice, resetPoints } from "./helper.js";
+
 const radioButtons = document.getElementsByName("choice");
 const userChoiceImage = document.querySelector(".user-choice");
-const enemyChoiceImage = document.querySelector(".enemy-choice");
-const images = ["images/rock.jpg", "images/paper.jpg", "images/scissors.jpg"];
 const modalHeader = document.querySelector(".modal__header");
 const content = document.querySelector(".modal__content");
+const modalRoot = document.querySelector(".modal-container");
 const modalFooter = document.querySelector(".modal__footer");
-
-// Gets the user choice
-function getUserChoice() {
-  let choice;
-  let temp;
-  for (let i = 0; i < radioButtons.length; i++) {
-    if (radioButtons[i].checked) {
-      choice = i;
-      temp = radioButtons[i].value;
-      break;
-    }
-  }
-  // console.log("user", temp, choice);
-  return choice;
-}
-
-// Gets the enemy choice when the fight button was clicked
-function getEnemyChoice() {
-  const enemyCaption = document.querySelector(".enemy-caption");
-  // gets a random choice from the radio buttons
-  const choice = getRandom(radioButtons);
-  enemyChoiceImage.src = images[choice];
-  enemyCaption.innerHTML = radioButtons[choice].value;
-  // console.log("enemy", radioButtons[choice].value, choice);
-  return choice;
-}
-
-function getRandom(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-// randomize the enemy choice images
-function randomize() {
-  const rng = images[getRandom(images)];
-  enemyChoiceImage.src = rng;
-}
-
-function setUserImage() {
-  radioButtons.forEach((radio) =>
-    radio.addEventListener("click", () => {
-      if (radio.value === "Rock") userChoiceImage.src = "images/rock.jpg";
-      else if (radio.value === "Paper")
-        userChoiceImage.src = "images/paper.jpg";
-      else userChoiceImage.src = "images/scissors.jpg";
-    })
-  );
-}
-
-setUserImage();
-
 const userScore = document.querySelector(".user-score");
 const enemyScore = document.querySelector(".enemy-score");
 const draw = document.querySelector(".draw");
+
+(function setUserImage() {
+  radioButtons.forEach((radio) =>
+    radio.addEventListener("click", () => {
+      switch (radio.value) {
+        case "Rock":
+          userChoiceImage.src = "images/rock.jpg";
+          break;
+        case "Paper":
+          userChoiceImage.src = "images/paper.jpg";
+          break;
+        case "Scissor":
+          userChoiceImage.src = "images/scissors.jpg";
+          break;
+      }
+    })
+  );
+})();
 
 /*
   ROCK- 0 - 1
@@ -68,7 +35,7 @@ const draw = document.querySelector(".draw");
 */
 
 // logic for checking who wins
-function fight() {
+export function fight() {
   const user = getUserChoice();
   const enemy = getEnemyChoice();
 
@@ -105,10 +72,10 @@ function fight() {
 
   if (userScore.textContent == 10) {
     endModal("YOU WIN");
-    resetPoints();
+    resetPoints(enemyScore, userScore, draw);
   } else if (enemyScore.textContent == 10) {
     endModal("YOU LOSE");
-    resetPoints();
+    resetPoints(enemyScore, userScore, draw);
   }
 }
 
@@ -120,18 +87,11 @@ function endModal(winOrLose) {
   modalRoot.classList.add("visible");
 }
 
-// toggles every round
+// toggles on every round
 function resultModal(message) {
   modalHeader.innerHTML = "";
   modalFooter.innerHTML = "";
   content.classList.add("center");
   content.innerHTML = message;
   modalRoot.classList.toggle("visible");
-}
-
-// resets the points after the player/enemy reaches 10 points
-function resetPoints() {
-  enemyScore.textContent = 0;
-  userScore.textContent = 0;
-  draw.textContent = 0;
 }
